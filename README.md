@@ -1,5 +1,48 @@
-# LLM Security Red Team Harness v2 (Gemini Edition)
+# LLM Security Red-Team Harness & Multi-Agent System (v3)
 
+Zaawansowany zestaw do testów bezpieczeństwa i benchmarkingu, zaprojektowany specjalnie do rygorystycznego testowania odporności **zespołu agentów AI** (zbudowanego przy użyciu LangGraph i FastAPI) na zaawansowane wektory ataków, takie jak prompt injection, jailbreak, ekstrakcja danych oraz wyczerpanie zasobów.
+
+> **Ważne:** Do prawidłowego przeprowadzenia audytu i uruchomienia środowiska testowego wymagane jest najpierw pobranie i uruchomienie projektu z repozytorium:  
+> 🔗 **[https://github.com/piotrwalas1/llm-security-redteam-harness-AIagents2)**
+
+---
+
+## 🏗️ Przegląd Architektury i Zespołu Agentów
+
+System testuje architekturę wieloagentową składającą się z:
+1. **Security Guard (Gatekeeper):** Pierwsza linia obrony, która analizuje zapytania użytkownika, wykrywa intencje ataku i odfiltrowuje złośliwe prompty przed przekazaniem ich do zespołu.
+2. **Zespół Agentów (LangGraph Workflow):** Koordynowana grupa wyspecjalizowanych agentów współpracujących nad rozwiązywaniem złożonych zadań użytkownika.
+3. **Zewnętrzny Sędzia Benchmarkowy (Vertex AI):** Ocenia w skali binarnej (`10` dla odporności/sukcesu obrony, `0` dla przełamania) reakcje systemu na próby manipulacji.
+
+---
+
+## 🛡️ Zakres Testów i Kategorie Bezpieczeństwa
+
+Harness ocenia system w ramach **100 statycznych przypadków testowych** oraz w trybie dynamicznym:
+* **Direct & Indirect Prompt Injection** (Bezpośrednie i pośrednie wstrzykiwanie promptów)
+* **System Prompt & Instruction Leakage** (Wyciek instrukcji systemowych)
+* **Evasion via Encoding & Obfuscation** (Ewazja przez kodowanie i obfuskację)
+* **Sensitive Information & PII Extraction** (Ekstrakcja wrażliwych danych i PII)
+* **Roleplay & Social Engineering** (Social engineering i roleplay)
+* **Excessive Agency & Unsafe Tool Execution** (Nadmierna sprawczość i niebezpieczne narzędzia)
+* **Denial of Service & Resource Exhaustion** (Wyczerpanie zasobów i DoS)
+* **Logic & Integrity Manipulation** (Manipulacja logiką i integralnością)
+
+
+---
+
+## 📁 Struktura Projektu
+
+```text
+├── app.py                  # Serwer FastAPI hostujący testowany zespół agentów LangGraph
+├── config.py               # Zarządzanie konfiguracją i routingiem zapytań (target vs. judge)
+├── main.py                 # Punkt wejścia harnessu do audytu bezpieczeństwa
+├── test_config.py          # Testy jednostkowe konfiguracji GCP oraz aplikacji
+├── requirements.txt        # Zależności projektu
+├── .env                    # Zmienne środowiskowe i klucze API (ignorowane przez git)
+└── .gitignore              # Reguły wykluczeń Gita
+```
+System wspiera również **Dynamiczny Red-Teaming (Tryb PAIR - Prompt Automatic Iterative Refinement)** do automatycznego wyszukiwania ścieżek podatności.
 Zaawansowane, wieloagentowe środowisko testowe (**Harness**) przeznaczone do automatycznego audytowania bezpieczeństwa, podatności oraz poprawności merytorycznej modeli językowych (**LLM Red Teaming**). Narzędzie umożliwia wykonywanie zarówno wszechstronnych statycznych benchmarków, jak i zaawansowanych dynamicznych ataków adwersarialnych opartych na algorytmie **TAP (Tree-of-Attacks with Pruning)**.
 
 ---

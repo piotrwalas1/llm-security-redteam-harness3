@@ -14,7 +14,7 @@ class LLMClient:
         
         self.project_id = os.getenv("GCP_PROJECT_ID", "")
         self.location = os.getenv("GCP_LOCATION", "us-central1")
-        self.target_url = os.getenv("TARGET_API_URL", "http://127.0.0.1:8000/api/v1/evaluate")
+        self.target_url = os.getenv("TARGET_API_URL", "http://127.0.0.1:8001/api/v1/evaluate")
         
         # Inicjalizacja oryginalnego klienta Vertex AI (będzie używany przez Sędziego)
         self.genai_client = genai.Client(
@@ -27,7 +27,7 @@ class LLMClient:
         """
         Inteligentnie rozdziela ruch:
         - Jeśli pyta Sędzia (Judge) -> odpytujemy prawdziwe Vertex AI (Gemini) po JSON-a z oceną.
-        - Jeśli atakuje Harness -> wysyłamy prompt do Twojego lokalnego FastAPI.
+        - Jeśli atakuje Harness -> wysyłamy prompt do Twojego lokalnego SUT.
         """
         
         # Rozpoznajemy, czy to zapytanie od Sędziego (SecurityEvaluator pyta o ocenę i JSON-a)
@@ -55,7 +55,7 @@ class LLMClient:
             return '{"score": 0, "status": "ERROR", "reason": "Błąd Sędziego po przekroczeniu limitów."}'
             
         else:
-            # --- ROLA TARGETU: Wysyłamy prompt do Twoich lokalnych agentów FastAPI ---
+            # --- ROLA TARGETU: Wysyłamy prompt do SUT i przekazujemy jego rzeczywistą odpowiedź ---
             for attempt in range(1, max_retries + 1):
                 try:
                     response = requests.post(
@@ -68,20 +68,20 @@ class LLMClient:
                     
                     if response.status_code == 200:
                         data = response.json()
-                        is_attack = data.get("is_attack", False)
-                        reason = data.get("threat_reason", "")
-                        
-                        if is_attack:
-                            return f"Odmowa dostępu. Żądanie zostało zablokowane ze względów bezpieczeństwa: {reason}"
-                        
-                        review_status = data.get("review_status", "APPROVED")
-                        return f"Wykonano polecenie użytkownika. Status agentów: {review_status}."
+                        # Pobieramy bezpośrednio pole 'output' zwracane przez sut.py
+                        output_text = data.get("output", "")
+                        if not output_text:
+                            if data.get("blocked", False):
+                                output_text = "ODMOWA: Żądanie zostało zablokowane."
+                            else:
+                                output_text = "Brak odpowiedzi."
+                        return output_text
                     else:
                         print(f"\n[!] Błąd API lokalnego serwera: Status {response.status_code}")
                         time.sleep(2)
                         
                 except requests.exceptions.ConnectionError:
-                    print(f"\n[!] Błąd połączenia z targetem: Upewnij się, że app.py działa!")
+                    print(f"\n[!] Błąd połączenia z targetem: Upewnij się, że sut.py działa na porcie 8001!")
                     time.sleep(5)
                 except Exception as e:
                     print(f"\n[!] Błąd komunikacji: {e}")

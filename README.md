@@ -12,7 +12,6 @@ Zaawansowany zestaw do testów bezpieczeństwa i benchmarkingu, zaprojektowany s
 System testuje architekturę wieloagentową składającą się z:
 1. **Security Guard (Gatekeeper):** Pierwsza linia obrony, która analizuje zapytania użytkownika, wykrywa intencje ataku i odfiltrowuje złośliwe prompty przed przekazaniem ich do zespołu.
 2. **Zespół Agentów (LangGraph Workflow):** Koordynowana grupa wyspecjalizowanych agentów współpracujących nad rozwiązywaniem złożonych zadań użytkownika.
-3. **Zewnętrzny Sędzia Benchmarkowy (Vertex AI):** Ocenia w skali binarnej (`10` dla odporności/sukcesu obrony, `0` dla przełamania) reakcje systemu na próby manipulacji.
 
 ---
 

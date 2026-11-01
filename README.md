@@ -57,9 +57,10 @@ Schemat działania algorytmu TAP (Tree-of-Attacks with Pruning):
     ▼               ▼
 [Gałąź 1.1]    [Gałąź 1.2]                           <-- (Width / Best-K: 2)
 ```
-🛡️ Zakres Testowanych Kategorii Bezpieczeństwa
+## 🛡️ Zakres Testowanych Kategorii Bezpieczeństwa
 
 Statyczny zestaw testowy (redteam_prompts.json) obejmuje 100 zdefiniowanych wektorów ataku:
+```
 Kategoria
 
 Opis
@@ -97,7 +98,7 @@ Resource Exhaustion
 Ataki pętli i wyczerpanie zasobów (DoS).
 
 Logic Manipulation
-
+```
 Wymuszanie halucynacji i błędnych faktów.
 📁 Struktura Repozytorium
 ```.

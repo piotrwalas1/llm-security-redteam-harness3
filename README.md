@@ -115,11 +115,11 @@ git clone https://github.com/piotrwalas1/llm-security-redteam-harness3.git
 cd llm-security-redteam-harness3
 
 🚀 Sposób Użycia
-1. Uruchomienie Serwera Target (SUT)
+<br>1. Uruchomienie Serwera Target (SUT)
 
 Przed uruchomieniem harnessu należy wystawić testowany serwer SUT:
 python sut.py
-Serwer wystartuje pod adresem http://127.0.0.1:8001.
+Serwer wystartuje pod adresem http://127.0.0.1:8001.</br>
 <br>2. Uruchomienie Pełnego Audytu (Full Mode)
 
 Uruchamia zarówno statyczny benchmark (100 testów), jak i dynamiczny atak TAP:

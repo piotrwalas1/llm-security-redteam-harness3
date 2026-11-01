@@ -1,4 +1,4 @@
-🛡️ LLM Security Red-Team Harness & Multi-Agent Framework (v3)
+🛡️###LLM Security Red-Team Harness & Multi-Agent Framework (v3)###
 
 LLM Security Red-Team Harness v3 to zaawansowane, wieloagentowe środowisko testowe przeznaczone do automatycznego audytowania bezpieczeństwa, wykrywania podatności oraz ewaluacji odporności modeli językowych (LLM) i agentów AI na zaawansowane wektory ataków adwersarialnych.
 

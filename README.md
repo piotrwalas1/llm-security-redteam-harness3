@@ -61,45 +61,25 @@ Schemat działania algorytmu TAP (Tree-of-Attacks with Pruning):
 
 Statyczny zestaw testowy (redteam_prompts.json) obejmuje 100 zdefiniowanych wektorów ataku:
 ```
-Kategoria
+Kategoria                           Opis
 
-Opis
+Direct Prompt Injection      Bezpośrednie próby przejęcia kontroli nad instrukcją (np. DAN, Sudo Mode).
 
-Direct Prompt Injection
+System Prompt Leakage        Wymuszanie ujawnienia ukrytych instrukcji systemowych i zmiennych.
 
-Bezpośrednie próby przejęcia kontroli nad instrukcją (np. DAN, Sudo Mode).
+Evasion & Obfuscation        Omijanie filtrów za pomocą kodowania (Base64, ROT13, języki rzadkie).
 
-System Prompt Leakage
+Indirect Prompt Injection    Ukryte instrukcje w danych (JSON, PDF, RAG context).
 
-Wymuszanie ujawnienia ukrytych instrukcji systemowych i zmiennych.
+Sensitive Info & PII         Próby wyłudzenia kluczy API, haseł oraz danych osobowych.
 
-Evasion & Obfuscation
+Roleplay & Social Eng.       Manipulacja kontekstem fabularnym i autorytetem.
 
-Omijanie filtrów za pomocą kodowania (Base64, ROT13, języki rzadkie).
+Excessive Agency             Wywoływanie niebezpiecznych poleceń systemowych i funkcji.
 
-Indirect Prompt Injection
+Resource Exhaustion          Ataki pętli i wyczerpanie zasobów (DoS).
 
-Ukryte instrukcje w danych (JSON, PDF, RAG context).
-
-Sensitive Info & PII
-
-Próby wyłudzenia kluczy API, haseł oraz danych osobowych.
-
-Roleplay & Social Eng.
-
-Manipulacja kontekstem fabularnym i autorytetem.
-
-Excessive Agency
-
-Wywoływanie niebezpiecznych poleceń systemowych i funkcji.
-
-Resource Exhaustion
-
-Ataki pętli i wyczerpanie zasobów (DoS).
-
-Logic Manipulation
-
-Wymuszanie halucynacji i błędnych faktów.
+Logic Manipulation           Wymuszanie halucynacji i błędnych faktów.
 ```
 Wymuszanie halucynacji i błędnych faktów.
 📁 Struktura Repozytorium

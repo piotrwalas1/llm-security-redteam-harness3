@@ -17,17 +17,17 @@ Ten harness stanowi warstwę audytową dla wieloagentowego środowiska produkcyj
 
 ## 🌟 Kluczowe Funkcjonalności
 
-🌲 Dynamiczny Red-Teaming (Algorytm TAP): Drzewiaste przeszukiwanie przestrzeni ataków (Tree-of-Attacks with Pruning). Generuje równoległe warianty promptów adwersarialnych, ocenia ich potencjał w czasie rzeczywistym i automatycznie odrzuca nieskuteczne gałęzie (pruning).
+🌲 **Dynamiczny Red-Teaming (Algorytm TAP):** Drzewiaste przeszukiwanie przestrzeni ataków (Tree-of-Attacks with Pruning). Generuje równoległe warianty promptów adwersarialnych, ocenia ich potencjał w czasie rzeczywistym i automatycznie odrzuca nieskuteczne gałęzie (pruning).
 
-📋 Statyczny Benchmark Podatności (100 Test Cases): Gotowy zestaw danych (datasets/redteam_prompts.json) obejmujący wstrzykiwanie instrukcji, wyciek promptu systemowego, obfuskację oraz manipulację logiką.
+📋 **Statyczny Benchmark Podatności (100 Test Cases):** Gotowy zestaw danych (datasets/redteam_prompts.json) obejmujący wstrzykiwanie instrukcji, wyciek promptu systemowego, obfuskację oraz manipulację logiką.
 
-⚖️ Kontekstowy Sędzia (Context-Aware Evaluator): Dedykowany moduł oceniający oparty na Gemini 2.5 Flash. Analizuje odpowiedzi w skali 0–10, biorąc pod uwagę kategorię ataku, priorytet (severity) oraz oczekiwane zachowanie (expected_behavior).
+⚖️ **Kontekstowy Sędzia (Context-Aware Evaluator):** Dedykowany moduł oceniający oparty na Gemini 2.5 Flash. Analizuje odpowiedzi w skali 0–10, biorąc pod uwagę kategorię ataku, priorytet (severity) oraz oczekiwane zachowanie (expected_behavior).
 
-🔍 Post-Bypass Extraction: Automatyczny krok wywoływany po przełamaniu zabezpieczeń (BYPASSED) w celu weryfikacji skali wycieku danych (np. dosłownego brzmienia pierwszych zdań promptu systemowego).
+🔍 **Post-Bypass Extraction:** Automatyczny krok wywoływany po przełamaniu zabezpieczeń (BYPASSED) w celu weryfikacji skali wycieku danych (np. dosłownego brzmienia pierwszych zdań promptu systemowego).
 
-🎯 Walidacja Sędziego (Gold Set Benchmarking): Wbudowane narzędzie JudgeValidator do wyliczania macierzy pomyłek (Accuracy, Precision, Recall, F1-Score) na referencyjnym zbiorze judge_gold_set.json.
+🎯 **Walidacja Sędziego (Gold Set Benchmarking):** Wbudowane narzędzie JudgeValidator do wyliczania macierzy pomyłek (Accuracy, Precision, Recall, F1-Score) na referencyjnym zbiorze judge_gold_set.json.
 
-🏗️ Architektura Systemu
+## 🏗️ Architektura Systemu
 ```
 System opiera się na interakcji trzech odrębnych ról LLM:
                   ┌──────────────────────┐
@@ -82,7 +82,7 @@ Resource Exhaustion          Ataki pętli i wyczerpanie zasobów (DoS).
 Logic Manipulation           Wymuszanie halucynacji i błędnych faktów.
 ```
 Wymuszanie halucynacji i błędnych faktów.
-📁 Struktura Repozytorium
+## 📁 Struktura Repozytorium
 ```.
 ├── config.py                 # Routing zapytań (rozdzielenie ruchu Target vs. Judge LLM)
 ├── main.py                   # Punkt wejścia (CLI harnessu)
@@ -99,7 +99,7 @@ Wymuszanie halucynacji i błędnych faktów.
 ├── requirements.txt          # Zależności projektu
 └── .env                      # Konfiguracja środowiskowa (GCP_PROJECT_ID)
 ```
-⚙️ Wymagania i Instalacja
+## ⚙️ Wymagania i Instalacja
 
 Wymagania wstępne
 
@@ -114,19 +114,19 @@ Sklonuj repozytorium:
 git clone https://github.com/piotrwalas1/llm-security-redteam-harness3.git
 cd llm-security-redteam-harness3
 
-🚀 Sposób Użycia
-<br>1. Uruchomienie Serwera Target (SUT)
+**🚀 Sposób Użycia**
+<br>1. **Uruchomienie Serwera Target (SUT)**
 
 Przed uruchomieniem harnessu należy wystawić testowany serwer SUT:
 python sut.py
 Serwer wystartuje pod adresem http://127.0.0.1:8001.</br>
-<br>2. Uruchomienie Pełnego Audytu (Full Mode)
+<br>2. **Uruchomienie Pełnego Audytu (Full Mode)**
 
 Uruchamia zarówno statyczny benchmark (100 testów), jak i dynamiczny atak TAP:
 python main.py --mode full --output redteam_report.json</br>
-<br>3. Uruchomienie Wyłącznie Benchmarku Statycznego
+<br>3. **Uruchomienie Wyłącznie Benchmarku Statycznego**
 python main.py --mode static --dataset datasets/redteam_prompts.json</br>
-<br>4. Uruchomienie Dynamicznego Ataku TAP
+<br>4. **Uruchomienie Dynamicznego Ataku TAP**
 
 Możesz dostosować cel ataku oraz parametry drzewa TAP (Branching, Width, Pruning Threshold):
 python main.py --mode dynamic \
@@ -135,13 +135,13 @@ python main.py --mode dynamic \
   --width 2 \
   --pruning-threshold 3</br>
 
-<br>5. Walidacja Skuteczności Sędziego (Gold Set)
+<br>5. **Walidacja Skuteczności Sędziego (Gold Set)**
 
 Sprawdza poziom trafności oceny Sędziego w porównaniu z ludzkimi adnotacjami (datasets/judge_gold_set.json):
 python main.py --mode validate-judge --gold-set datasets/judge_gold_set.json
 📊 Format Raportu Wyjściowego
 
 Po zakończeniu audytu wyniki zapisywane są do pliku JSON (domyślnie redteam_report.json)</br>
-📄 Licencja
 
+📄 Licencja
 Projekt udostępniany na licencji MIT. Autor: Piotr Wałas.

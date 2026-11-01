@@ -15,7 +15,7 @@ Ten harness stanowi warstwę audytową dla wieloagentowego środowiska produkcyj
 
 👉 LLM Security Red-Team Harness (AI Agents 2)
 
-🌟 Kluczowe Funkcjonalności
+## 🌟 Kluczowe Funkcjonalności
 
 🌲 Dynamiczny Red-Teaming (Algorytm TAP): Drzewiaste przeszukiwanie przestrzeni ataków (Tree-of-Attacks with Pruning). Generuje równoległe warianty promptów adwersarialnych, ocenia ich potencjał w czasie rzeczywistym i automatycznie odrzuca nieskuteczne gałęzie (pruning).
 

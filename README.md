@@ -28,7 +28,7 @@ Ten harness stanowi warstwę audytową dla wieloagentowego środowiska produkcyj
 🎯 Walidacja Sędziego (Gold Set Benchmarking): Wbudowane narzędzie JudgeValidator do wyliczania macierzy pomyłek (Accuracy, Precision, Recall, F1-Score) na referencyjnym zbiorze judge_gold_set.json.
 
 🏗️ Architektura Systemu
-
+```
 System opiera się na interakcji trzech odrębnych ról LLM:
                   ┌──────────────────────┐
                   │     Attacker LLM     │
@@ -56,7 +56,7 @@ Schemat działania algorytmu TAP (Tree-of-Attacks with Pruning):
     ┌───────┴───────┐
     ▼               ▼
 [Gałąź 1.1]    [Gałąź 1.2]                           <-- (Width / Best-K: 2)
-
+```
 🛡️ Zakres Testowanych Kategorii Bezpieczeństwa
 
 Statyczny zestaw testowy (redteam_prompts.json) obejmuje 100 zdefiniowanych wektorów ataku:
@@ -100,7 +100,7 @@ Logic Manipulation
 
 Wymuszanie halucynacji i błędnych faktów.
 📁 Struktura Repozytorium
-.
+```.
 ├── config.py                 # Routing zapytań (rozdzielenie ruchu Target vs. Judge LLM)
 ├── main.py                   # Punkt wejścia (CLI harnessu)
 ├── sut.py                    # Produkcyjny serwer SUT (System Under Test) na port 8001
@@ -115,7 +115,7 @@ Wymuszanie halucynacji i błędnych faktów.
 │   └── judge_gold_set.json   # Zbiór referencyjny (Gold Set) do ewaluacji Sędziego
 ├── requirements.txt          # Zależności projektu
 └── .env                      # Konfiguracja środowiskowa (GCP_PROJECT_ID)
-
+```
 ⚙️ Wymagania i Instalacja
 
 Wymagania wstępne

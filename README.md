@@ -98,6 +98,8 @@ Resource Exhaustion
 Ataki pętli i wyczerpanie zasobów (DoS).
 
 Logic Manipulation
+
+Wymuszanie halucynacji i błędnych faktów.
 ```
 Wymuszanie halucynacji i błędnych faktów.
 📁 Struktura Repozytorium

@@ -6,7 +6,12 @@ System wspiera zarówno statyczny benchmarking (100+ dedykowanych przypadek test
 
 🔗 Integracja z Zespołem Agentów (AI Agents 2)
 
+> **Ważne:** Do prawidłowego przeprowadzenia audytu i uruchomienia środowiska testowego wymagane jest najpierw pobranie i uruchomienie projektu z repozytorium:  
+> 🔗 **[https://github.com/piotrwalas1/llm-security-redteam-harness-AIagents2)**
+
+---
 Ten harness stanowi warstwę audytową dla wieloagentowego środowiska produkcyjnego. Do pełnego przetestowania przepływów wymagana jest praca z repozytorium serwera agentów:
+
 
 👉 LLM Security Red-Team Harness (AI Agents 2)
 

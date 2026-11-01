@@ -28,8 +28,8 @@ Ten harness stanowi warstwę audytową dla wieloagentowego środowiska produkcyj
 🎯 **Walidacja Sędziego (Gold Set Benchmarking):** Wbudowane narzędzie JudgeValidator do wyliczania macierzy pomyłek (Accuracy, Precision, Recall, F1-Score) na referencyjnym zbiorze judge_gold_set.json.
 
 ## 🏗️ Architektura Systemu
+**System opiera się na interakcji trzech odrębnych ról LLM:**
 ```
-System opiera się na interakcji trzech odrębnych ról LLM:
                   ┌──────────────────────┐
                   │     Attacker LLM     │
                   │   (Generowanie TAP)  │

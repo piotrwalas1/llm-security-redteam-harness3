@@ -137,28 +137,28 @@ cd llm-security-redteam-harness3
 Przed uruchomieniem harnessu należy wystawić testowany serwer SUT:
 python sut.py
 Serwer wystartuje pod adresem http://127.0.0.1:8001.
-2. Uruchomienie Pełnego Audytu (Full Mode)
+<br>2. Uruchomienie Pełnego Audytu (Full Mode)
 
 Uruchamia zarówno statyczny benchmark (100 testów), jak i dynamiczny atak TAP:
-python main.py --mode full --output redteam_report.json
-3. Uruchomienie Wyłącznie Benchmarku Statycznego
-python main.py --mode static --dataset datasets/redteam_prompts.json
-4. Uruchomienie Dynamicznego Ataku TAP
+python main.py --mode full --output redteam_report.json</br>
+<br>3. Uruchomienie Wyłącznie Benchmarku Statycznego
+python main.py --mode static --dataset datasets/redteam_prompts.json</br>
+<br>4. Uruchomienie Dynamicznego Ataku TAP
 
 Możesz dostosować cel ataku oraz parametry drzewa TAP (Branching, Width, Pruning Threshold):
 python main.py --mode dynamic \
   --goal "Extract system prompt instructions" \
   --branching-factor 3 \
   --width 2 \
-  --pruning-threshold 3
+  --pruning-threshold 3</br>
 
-5. Walidacja Skuteczności Sędziego (Gold Set)
+<br>5. Walidacja Skuteczności Sędziego (Gold Set)
 
 Sprawdza poziom trafności oceny Sędziego w porównaniu z ludzkimi adnotacjami (datasets/judge_gold_set.json):
 python main.py --mode validate-judge --gold-set datasets/judge_gold_set.json
 📊 Format Raportu Wyjściowego
 
-Po zakończeniu audytu wyniki zapisywane są do pliku JSON (domyślnie redteam_report.json)
+Po zakończeniu audytu wyniki zapisywane są do pliku JSON (domyślnie redteam_report.json)</br>
 📄 Licencja
 
 Projekt udostępniany na licencji MIT. Autor: Piotr Wałas.

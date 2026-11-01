@@ -41,9 +41,9 @@ System opiera się na interakcji trzech odrębnych ról LLM:
 │   (Judge LLM)    │                    │ (Model Testowany)│
 │ Skala: 0 - 10    │◄───────────────────┤                  │
 └──────────────────┘  Odpowiedź Targeta  └──────────────────┘
-
-Schemat działania algorytmu TAP (Tree-of-Attacks with Pruning):
-                     [Seed / Goal]
+```
+**Schemat działania algorytmu TAP (Tree-of-Attacks with Pruning):**
+   ```               [Seed / Goal]
                             │
             ┌───────────────┼───────────────┐
             ▼               ▼               ▼
